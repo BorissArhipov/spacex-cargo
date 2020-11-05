@@ -1,38 +1,19 @@
 import React, {Component} from 'react';
-import {Route, Switch } from 'react-router-dom';
 import Header from './../header/header';
-import SideBar from '../sideBar/sideBar';
-import ShipmentPage from '../shipmnetPage/shipmentPage';
-import { connect } from 'react-redux';
+import Main from '../main/main';
 
+import 'bootstrap-css-only';
+import './app.css'
 
 class App extends Component {
 	render() {
 		return (
-			<div>
+			<div className="app--con">
                 <Header/>
-                <SideBar/>
-                <Switch>
-                    {
-                        this.props.shipments.map(item => {
-                            return <Route 
-                                key={`${item.id}-page`} 
-                                exact 
-                                path={`/${item.id}`} 
-                                render={() => {
-                                        return <ShipmentPage itemId={item.id} />
-                                }}
-                            />
-                        })
-                    }
-                </Switch>	    
+                <Main/>   
 			</div>
 		);
     }
 }
 
-function mapStateToProps( { coFetchShipments: { shipments } }) {
-    return { shipments };
-}
-
-export default connect(mapStateToProps)(App);
+export default App;

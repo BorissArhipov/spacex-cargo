@@ -1,42 +1,13 @@
 import React, { Component } from 'react';
 import { cargoChange } from '../../actions/cargoChange';
 import { connect } from 'react-redux';
+import CargoInput from '../cargoInput/cargoInput';
+
+import './shipmentPage.css';
 
 
 class ShipmentPage extends Component {
-    validate(value) {
-        let valid = true;
-        value.split(',').forEach(item => {
-            if(isNaN(Number(item))) {
-                valid = false;
-            }
-        }) 
-        return valid;
-    }
-    
-    handleChange(e) {
-        e.preventDefault();
-        if(!this.validate(e.target.value)) {
-            console.log('invalid');
-            return;
-        }
-
-        const findCargo = () => {
-            let shipnts = this.props.coFetchShipments.shipments;
-            shipnts.map(item => {
-                if(item.id === this.props.itemId) {
-                    return item.boxes = e.target.value
-                } else {
-                    return item;
-                }
-            })
-            return shipnts;
-        }
-
-        this.props.cargoChange(findCargo());
-    }
-    
-    
+      
     render() {
         let currentItem;
         
@@ -49,14 +20,6 @@ class ShipmentPage extends Component {
         }
         findCurrentItem();
 
-        const inputValue = () => {
-            if( currentItem.boxes !== null) {
-                return currentItem.boxes
-            } else {
-                return '';
-            }
-        }
-
         const bays = () => {
             let value;
             if(currentItem.boxes === null || '') {
@@ -68,16 +31,15 @@ class ShipmentPage extends Component {
         }
 
         return(
-            <div>
+            <div className="shipment">
                 <h2>{currentItem.name}</h2>
                 <a href="#">{currentItem.email}</a>
                 <p>
                     Number of required cargo bays: {bays()}
                 </p>
-                <input 
-                    value={inputValue()} 
-                    type="text"
-                    onChange={e => this.handleChange(e)}
+                <CargoInput 
+                    itemId={this.props.itemId}
+                    value={currentItem.boxes}
                 />
             </div>
         );

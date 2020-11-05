@@ -3,28 +3,45 @@ import { fetchData } from '../../actions/fetch-actions';
 import { connect } from 'react-redux';
 import { saveState } from '../../toLocalStorage/toLocalStorage';
 import { changeSearchWord } from '../../actions/changeSearchWord';
+import { Link } from 'react-router-dom';
+
+import './header.css';
 
 class Header extends Component {
     render() {
         return(
-            <div>
-                <input 
-                    placeholder="Search" 
-                    type="text"
-                    onChange={e => this.props.changeSearchWord(e.target.value)}
-                />
-                <button 
-                    onClick={() => this.props.fetchData()}
-                >
-                    LOAD
-                </button>
-
-                <button 
-                    onClick={() => saveState({coFetchShipments: {shipments: this.props.shipments}})}
-                >
-                    SAVE
-                </button>
-            </div>
+            <header className="header navbar navbar-expand-lg navbar-light bg-light">
+                <div className="container">
+                    <div className="header--con">
+                        <Link 
+                            to={`/`}
+                            className="navbar-brand"
+                        >
+                            Cargo Planner
+                        </Link>
+                        <div className="header--con2">
+                            <input 
+                                placeholder="Search" 
+                                type="text"
+                                onChange={e => this.props.changeSearchWord(e.target.value)}
+                                className="form-control header--input"
+                            />
+                            <button 
+                                onClick={() => this.props.fetchData()}
+                                className="btn btn-primary header--btn"
+                            >
+                                LOAD
+                            </button>
+                            <button 
+                                onClick={() => saveState({coFetchShipments: {shipments: this.props.shipments}})}
+                                className="btn btn-secondary header--btn"
+                            >
+                                SAVE
+                            </button>      
+                        </div>   
+                    </div>  
+                </div>
+            </header>
         );
     }
 }
