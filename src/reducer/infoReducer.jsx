@@ -17,7 +17,7 @@ const infoReducer = (state = initialState, action) => {
             if(action.payload === 'loaded') {
                 return {
                     ...state,
-                    message: 'Data loaded, but not saved.',
+                    message: 'Data loaded, but is not saved.',
                     color: '#a27e0f'
                 };  
             }
@@ -25,7 +25,7 @@ const infoReducer = (state = initialState, action) => {
             if(action.payload === 'invalid-input') {
                 return {
                     ...state,
-                    message: 'You can only use characters 0-9, \',\' and \'.\'. Characters must be in right order',
+                    message: 'You can only use characters 0-9, \',\' and \'.\'. Characters must be in the right order',
                     color: '#a27e0f'
                 };  
             }
