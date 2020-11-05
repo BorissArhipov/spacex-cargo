@@ -1,6 +1,6 @@
 export const loadState = () => {
     try {
-        const serializedShipmentState = localStorage.getItem('fetchShipments');
+        const serializedShipmentState = localStorage.getItem('cofetchShipments');
         if (serializedShipmentState === null) {
             return undefined;
         }
@@ -13,7 +13,7 @@ export const loadState = () => {
 export const saveState = shipments => {
     try {
         const serializeShipmentState = JSON.stringify(shipments);
-        localStorage.setItem('fetchShipments', serializeShipmentState);
+        localStorage.setItem('cofetchShipments', serializeShipmentState);
     } catch (err) {
         new Error(err);
     }

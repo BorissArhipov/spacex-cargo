@@ -15,7 +15,7 @@ class Header extends Component {
                 </button>
 
                 <button 
-                    onClick={() => saveState({fetchShipments: {shipments: this.props.shipments}})}
+                    onClick={() => saveState({cofetchShipments: {shipments: this.props.shipments}})}
                 >
                     SAVE
                 </button>
@@ -24,7 +24,7 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = ({ fetchShipments: { shipments } }) => {
+function mapStateToProps( { cofetchShipments: { shipments } }) {
     return { shipments };
 }
 

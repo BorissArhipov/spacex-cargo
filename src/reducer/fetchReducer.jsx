@@ -26,6 +26,12 @@ const fetchShipments = (state = initialState, action) => {
                 loading: false,
                 error: action.payload
             };
+        case 'CARGO_CHANGE':
+            console.log(action);
+            return {
+                ...state,
+                shipments: action.payload
+            };
             
         default:
             return state;

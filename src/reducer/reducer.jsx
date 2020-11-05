@@ -3,7 +3,7 @@ import fetchShipments from './fetchReducer';
 
 
 const reducer = combineReducers({
-    fetchShipments: fetchShipments
+    cofetchShipments: fetchShipments
 });
   
 export default reducer;
