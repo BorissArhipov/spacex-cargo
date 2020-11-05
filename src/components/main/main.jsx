@@ -26,12 +26,18 @@ class Main extends Component {
                         <div className="main--con">
                             <SideBar/>
                             <Switch>
+                                <Route path="/"
+                                    render={() => <ShipmentPage itemId={null}/>}
+                                    exact />
                                 {
                                     this.props.shipments.map(item => {
+                                        const pathTo = () => {
+                                            return item.name.split(' ').join('-').toLowerCase();
+                                        }
                                         return <Route 
                                             key={`${item.id}-page`} 
                                             exact 
-                                            path={`/${item.id}`} 
+                                            path={`/${pathTo()}`} 
                                             render={() => {
                                                     return <ShipmentPage itemId={item.id} />
                                             }}

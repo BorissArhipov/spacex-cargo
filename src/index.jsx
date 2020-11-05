@@ -15,7 +15,7 @@ const persistedState = loadState();
 const store = createStore(
 	reducer,
 	persistedState,
-    composeWithDevTools(middleware)
+    middleware
 	);
 
 ReactDOM.render(

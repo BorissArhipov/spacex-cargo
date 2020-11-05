@@ -23,9 +23,12 @@ class Sidebar extends Component {
                <ul className="list-group sidebar overflow-auto">
                     {
                         filteredList.map(item => {
+                            const linkTo = () => {
+                                return item.name.split(' ').join('-').toLowerCase();
+                            }
                             return (
                                 <li key={`${item.id}-link`} className="list-group-item">
-                                    <Link to={`/${item.id}`}>{item.name}</Link>    
+                                    <Link to={`/${linkTo()}`}>{item.name}</Link>    
                                 </li> 
                             );
                         }) 

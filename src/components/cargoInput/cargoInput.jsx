@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { cargoChange } from '../../actions/cargoChange';
 import { connect } from 'react-redux';
+import handleEvent from '../../actions/handleEvent';
+import clearMessage from '../../actions/clearMessage';
 
 
 class CargoInput extends Component {
@@ -17,7 +19,8 @@ class CargoInput extends Component {
     handleChange(e) {
         e.preventDefault();
         if(!this.validate(e.target.value)) {
-            console.log('invalid');
+            this.props.handleEvent('invalid-input');
+            setTimeout(this.props.clearMessage, 4000);
             return;
         }
 
@@ -71,4 +74,4 @@ function mapStateToProps( {coFetchShipments}) {
     }
 }
 
-export default connect(mapStateToProps, { cargoChange })(CargoInput);
+export default connect(mapStateToProps, { cargoChange, handleEvent, clearMessage })(CargoInput);

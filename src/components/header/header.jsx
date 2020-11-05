@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { saveState } from '../../toLocalStorage/toLocalStorage';
 import { changeSearchWord } from '../../actions/changeSearchWord';
 import { Link } from 'react-router-dom';
+import handleEvent from '../../actions/handleEvent';
+import clearMessage from '../../actions/clearMessage';
 
 import './header.css';
 
@@ -33,7 +35,11 @@ class Header extends Component {
                                 LOAD
                             </button>
                             <button 
-                                onClick={() => saveState({coFetchShipments: {shipments: this.props.shipments}})}
+                                onClick={() => {
+                                    saveState({coFetchShipments: {shipments: this.props.shipments}})
+                                    this.props.handleEvent('saved');
+                                    setTimeout(this.props.clearMessage, 4000);
+                                }}
                                 className="btn btn-secondary header--btn"
                             >
                                 SAVE
@@ -50,4 +56,4 @@ function mapStateToProps( { coFetchShipments: { shipments } }) {
     return { shipments };
 }
 
-export default connect(mapStateToProps, { fetchData, changeSearchWord })(Header);
+export default connect(mapStateToProps, { fetchData, changeSearchWord, handleEvent, clearMessage })(Header);
