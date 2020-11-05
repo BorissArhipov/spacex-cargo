@@ -9,10 +9,13 @@ module.exports = (env = 'development') => {
         output: {
             publicPath: '/'
         },
+        resolve: {
+            extensions: [".ts", ".tsx", ".js", ".jsx"]
+        },
         module: {
             rules: [
                 {
-                    test: /\.js$/,            
+                    test: /\.(jsx|js)$/,            
                     use: [
                         {
                             loader: 'babel-loader'
