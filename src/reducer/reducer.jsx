@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import fetchShipments from './fetchReducer';
+import searchReducer from './searchReducer';
 
 
 const reducer = combineReducers({
-    cofetchShipments: fetchShipments
+    coFetchShipments: fetchShipments,
+    coSearchReducer :searchReducer 
 });
   
 export default reducer;

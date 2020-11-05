@@ -22,7 +22,7 @@ class ShipmentPage extends Component {
         }
 
         const findCargo = () => {
-            let shipnts = this.props.cofetchShipments.shipments;
+            let shipnts = this.props.coFetchShipments.shipments;
             shipnts.map(item => {
                 if(item.id === this.props.itemId) {
                     return item.boxes = e.target.value
@@ -41,13 +41,21 @@ class ShipmentPage extends Component {
         let currentItem;
         
         const findCurrentItem = () => {
-            this.props.cofetchShipments.shipments.find(item => {
+            this.props.coFetchShipments.shipments.find(item => {
                 if(item.id === this.props.itemId) {
                     currentItem = item;
                 }
             });
         }
         findCurrentItem();
+
+        const inputValue = () => {
+            if( currentItem.boxes !== null) {
+                return currentItem.boxes
+            } else {
+                return '';
+            }
+        }
 
         const bays = () => {
             let value;
@@ -67,7 +75,7 @@ class ShipmentPage extends Component {
                     Number of required cargo bays: {bays()}
                 </p>
                 <input 
-                    defaultValue={currentItem.boxes} 
+                    value={inputValue()} 
                     type="text"
                     onChange={e => this.handleChange(e)}
                 />
@@ -76,9 +84,9 @@ class ShipmentPage extends Component {
     }
 }
 
-function mapStateToProps( {cofetchShipments}) {
+function mapStateToProps( {coFetchShipments}) {
     return {
-        cofetchShipments
+        coFetchShipments
     }
 }
 

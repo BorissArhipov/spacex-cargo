@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import { fetchData } from '../../actions/fetch-actions';
 import { connect } from 'react-redux';
 import { saveState } from '../../toLocalStorage/toLocalStorage';
+import { changeSearchWord } from '../../actions/changeSearchWord';
 
 class Header extends Component {
     render() {
-        console.log(this.props.shipments);
         return(
             <div>
+                <input 
+                    placeholder="Search" 
+                    type="text"
+                    onChange={e => this.props.changeSearchWord(e.target.value)}
+                />
                 <button 
                     onClick={() => this.props.fetchData()}
                 >
@@ -15,7 +20,7 @@ class Header extends Component {
                 </button>
 
                 <button 
-                    onClick={() => saveState({cofetchShipments: {shipments: this.props.shipments}})}
+                    onClick={() => saveState({coFetchShipments: {shipments: this.props.shipments}})}
                 >
                     SAVE
                 </button>
@@ -24,8 +29,8 @@ class Header extends Component {
     }
 }
 
-function mapStateToProps( { cofetchShipments: { shipments } }) {
+function mapStateToProps( { coFetchShipments: { shipments } }) {
     return { shipments };
 }
 
-export default connect(mapStateToProps, { fetchData })(Header);
+export default connect(mapStateToProps, { fetchData, changeSearchWord })(Header);
