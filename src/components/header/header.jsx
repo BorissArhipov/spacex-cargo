@@ -6,6 +6,9 @@ import { changeSearchWord } from '../../actions/changeSearchWord';
 import { Link } from 'react-router-dom';
 import handleEvent from '../../actions/handleEvent';
 import clearMessage from '../../actions/clearMessage';
+import SideBar from '../sideBar/sideBar';
+import toggleBurger from '../../actions/toggleBurger';
+
 
 import './header.css';
 
@@ -13,6 +16,27 @@ class Header extends Component {
     render() {
         return(
             <header className="header navbar navbar-expand-lg navbar-light bg-light">
+                <div className={this.props.coBurgerReducer.burger}>
+                    <div className="header--con-mob">
+                        <button 
+                            onClick={() => this.props.fetchData()}
+                            className="btn btn-primary header--btn-mob"
+                        >
+                            LOAD
+                        </button>
+                        <button 
+                            onClick={() => {
+                                saveState({coFetchShipments: {shipments: this.props.shipments}})
+                                this.props.handleEvent('saved');
+                                setTimeout(this.props.clearMessage, 4000);
+                            }}
+                            className="btn btn-secondary header--btn-mob"
+                        >
+                            SAVE
+                        </button>      
+                    </div>
+                    <SideBar/>
+                </div>
                 <div className="container">
                     <div className="header--con">
                         <Link 
@@ -43,7 +67,15 @@ class Header extends Component {
                                 className="btn btn-secondary header--btn"
                             >
                                 SAVE
-                            </button>      
+                            </button> 
+                            <button 
+                                className="header--burger"
+                                onClick={() => this.props.toggleBurger()}
+                            >
+                                <div className="header--stick"></div>
+                                <div className="header--stick"></div>
+                                <div className="header--stick"></div>
+                            </button>     
                         </div>   
                     </div>  
                 </div>
@@ -52,8 +84,8 @@ class Header extends Component {
     }
 }
 
-function mapStateToProps( { coFetchShipments: { shipments } }) {
-    return { shipments };
+function mapStateToProps( { coFetchShipments: { shipments }, coBurgerReducer }) {
+    return { shipments, coBurgerReducer };
 }
 
-export default connect(mapStateToProps, { fetchData, changeSearchWord, handleEvent, clearMessage })(Header);
+export default connect(mapStateToProps, { fetchData, changeSearchWord, handleEvent, clearMessage, toggleBurger })(Header);

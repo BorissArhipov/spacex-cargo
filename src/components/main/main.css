@@ -1,9 +1,28 @@
 .main {
     height: 94%;
     padding: 20px 0;
+    position: relative;
 }
 
 .main--con {
     display: flex;
     height: 100%;
+}
+
+@media screen and (max-height: 850px) {
+    .main {
+        height: 90%;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .main {
+        height: 85%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main--sidebar {
+        display: none;
+    }
 }

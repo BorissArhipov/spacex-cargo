@@ -15,7 +15,7 @@ const shipmentsLoaded = (newShipments) => {
 
 const fetchData = () => (dispatch) => {
     dispatch(shipmentsRequested());
-    fetch('http://localhost:8080/data/shipments.json')
+    fetch('https://cargo.borissarhipov.me/data/shipments.json')
         .then((data) => {
             data.json().then(res => {
                 dispatch(shipmentsLoaded(res));

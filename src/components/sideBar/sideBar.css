@@ -2,3 +2,9 @@
     height: 100%;
     width: 310px;
 }
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+    }
+}

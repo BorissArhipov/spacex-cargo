@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import closeBurger from '../../actions/closeBurger.jsx'
 
 import './sideBar.css';
 
@@ -28,7 +29,10 @@ class Sidebar extends Component {
                             }
                             return (
                                 <li key={`${item.id}-link`} className="list-group-item">
-                                    <Link to={`/${linkTo()}`}>{item.name}</Link>    
+                                    <Link 
+                                        to={`/${linkTo()}`}
+                                        onClick={() => this.props.closeBurger()}
+                                    >{item.name}</Link>    
                                 </li> 
                             );
                         }) 
@@ -46,4 +50,4 @@ function mapStateToProps( { coFetchShipments, coSearchReducer}) {
     };
 }
 
-export default connect(mapStateToProps)(Sidebar);
+export default connect(mapStateToProps, { closeBurger })(Sidebar);

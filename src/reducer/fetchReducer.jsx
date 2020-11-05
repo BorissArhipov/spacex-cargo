@@ -1,6 +1,6 @@
 const initialState = {
     shipments: [],
-    loading: true,
+    loading: false,
     error: null
 }
 

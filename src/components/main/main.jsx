@@ -24,7 +24,9 @@ class Main extends Component {
                 <section className="main">
                     <div className="container">
                         <div className="main--con">
-                            <SideBar/>
+                            <div className="main--sidebar">
+                                <SideBar/>
+                            </div>
                             <Switch>
                                 <Route path="/"
                                     render={() => <ShipmentPage itemId={null}/>}
@@ -39,7 +41,7 @@ class Main extends Component {
                                             exact 
                                             path={`/${pathTo()}`} 
                                             render={() => {
-                                                    return <ShipmentPage itemId={item.id} />
+                                                return <ShipmentPage itemId={item.id} />
                                             }}
                                         />
                                     })

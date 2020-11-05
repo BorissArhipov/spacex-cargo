@@ -17,4 +17,5 @@ body {
 
 .app--con {
     height: 100%;
+    position: relative;
 }

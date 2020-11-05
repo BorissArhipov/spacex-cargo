@@ -4,9 +4,11 @@
 
 .header--con {
     display: flex;
+    position: relative;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    z-index: 1030;
 }
 
 .header--con2 {
@@ -21,4 +23,93 @@
 
 .header--btn {
     margin: 0 5px;
+}
+
+.header--mob {
+    display: none;
+}
+
+.header--burger {
+    display: none;
+}
+
+.header--con-mob {
+    display: none;
+}
+
+@media screen and (max-height: 850px) {
+    .header {
+        height: 10%;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    .header {
+        height: 15%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .header--burger {
+        display: block;
+        border: none;
+        background: none;
+    }
+
+    .header--stick {
+        width: 17px;
+        height: 2px;
+        background-color: #000000;
+        margin: 5px 0;
+    }
+
+    .header--mob {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        justify-content: center;
+        flex-direction: column;
+        align-self: center;
+        transition: all 0.4s ease;
+        z-index: 1000;
+        padding-top: 12%;
+    }
+
+    .burger--active {
+        height: 90%;
+    }
+
+    .burger--active {
+        height: 100vh;
+    }
+    
+    .header--btn {
+        display: none;
+    }
+
+    .header--btn-mob {
+        margin: 0 5px;
+        width: 40%;
+    }
+
+    .burger--active .header--con-mob {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .header--mob {
+        padding-top: 20%;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+    }
 }
