@@ -17,7 +17,7 @@ const infoReducer = (state = initialState, action) => {
             if(action.payload === 'loaded') {
                 return {
                     ...state,
-                    message: 'Data loaded, but is not saved.',
+                    message: 'Data loaded, but not saved.',
                     color: '#a27e0f'
                 };  
             }

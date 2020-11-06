@@ -6,7 +6,6 @@ import reducer from './reducer/reducer';
 import App from './components/app/app';
 import { BrowserRouter as Router } from 'react-router-dom';
 import thunk from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
 import { loadState } from './toLocalStorage/toLocalStorage';
 
 const middleware = applyMiddleware(thunk);
@@ -16,7 +15,7 @@ const store = createStore(
 	reducer,
 	persistedState,
     middleware
-	);
+);
 
 ReactDOM.render(
     <Provider store={store}>

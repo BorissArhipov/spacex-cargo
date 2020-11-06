@@ -23,8 +23,7 @@ const fetchData = () => (dispatch) => {
                 setTimeout(dispatch, 4000, clearMessage());
             })
         })
-        .catch((err) => {
-            dispatch(shipmentsError(err))
+        .catch(() => {
             dispatch(handleEvent('error'));
             setTimeout(dispatch, 4000, clearMessage());
         });
